@@ -5,6 +5,11 @@ A web-based phone recommendation system developed as a course project for the su
 
 The application is implemented in Python using Flask and demonstrates a content-based recommender system that takes user preferences and constraints into account.
 
+<img width="1241" height="1029" alt="image" src="https://github.com/user-attachments/assets/39cdc54c-5990-4af1-bfc5-ec721999d008" />
+<img width="1240" height="885" alt="image" src="https://github.com/user-attachments/assets/1729c509-8a09-4357-9b5a-99a3fb689a6d" />
+<img width="1239" height="897" alt="image" src="https://github.com/user-attachments/assets/b0963458-10fa-43a7-8ea7-193984e3073d" />
+
+
 ---
 
 ## 📌 Project Overview
