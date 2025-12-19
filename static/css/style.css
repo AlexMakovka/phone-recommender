@@ -1,0 +1,282 @@
+/* Base typography and background */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 80px auto 40px;
+    padding: 0 16px;
+}
+
+/* Navbar */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.3);
+    z-index: 100;
+}
+
+.navbar__logo {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.navbar__links a {
+    color: #e5e7eb;
+    text-decoration: none;
+    margin-left: 16px;
+    font-size: 0.95rem;
+}
+
+.navbar__links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Header / Hero */
+
+.hero {
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.hero__content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.hero__content p {
+    margin: 0;
+    color: #4b5563;
+}
+
+/* Cards and general elements */
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px 22px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    box-sizing: border-box;
+}
+
+.card--form {
+    margin-top: 8px;
+}
+
+.card--phone {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card--phone:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.18);
+}
+
+.card--user {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Form */
+
+.form-section {
+    margin-top: 12px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px 32px;
+    margin-top: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group--full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    color: #111827;
+}
+
+.form-group input[type="number"] {
+    margin-top: 4px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+.form-actions {
+    margin-top: 8px;
+}
+
+/* Button */
+
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primary:hover {
+    opacity: 0.95;
+}
+
+/* Results */
+
+.results-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.results-header p {
+    margin: 4px 0;
+    color: #374151;
+}
+
+.filters-box {
+    margin-top: 8px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    font-size: 0.9rem;
+}
+
+.filters-box ul {
+    margin: 4px 0 0;
+    padding-left: 18px;
+}
+
+/* Phone cards grid */
+
+.cards-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.card__image {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__body h2 {
+    font-size: 1.1rem;
+    margin: 10px 0 8px;
+}
+
+.spec-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.spec-list li {
+    margin: 3px 0;
+}
+
+.spec-list span {
+    font-weight: 500;
+    color: #374151;
+}
+
+/* User page */
+
+.user-section {
+    margin-top: 12px;
+}
+
+.user-info ul {
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+.user-info li {
+    margin-bottom: 4px;
+}
+
+/* Footer */
+
+.footer {
+    margin-top: 40px;
+    padding: 16px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Helper classes */
+
+.muted {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.back-link-wrapper {
+    margin-top: 24px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #2563eb;
+    font-size: 0.95rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

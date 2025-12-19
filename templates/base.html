@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title or "Recommendation System" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="navbar">
+    <div class="navbar__logo">
+        📱 PhoneRecommender
+    </div>
+    <nav class="navbar__links">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('index') }}#form">Recommendations</a>
+        <a href="{{ url_for('user_page') }}">User Page</a>
+
+        {% if current_user %}
+            <span class="navbar__user">👤 {{ current_user }}</span>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Log In</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main class="page">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <p>Demo smartphone recommendation system</p>
+</footer>
+</body>
+</html>

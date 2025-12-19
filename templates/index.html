@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero__content">
+        <h1>Find a Smartphone for Your Needs</h1>
+        <p>Specify how you use your phone and which features are important — the system will select a few suitable models.</p>
+    </div>
+</section>
+
+<section class="form-section" id="form">
+    <div class="card card--form">
+        <h2>Your Preferences</h2>
+        <p class="muted">Choose usage scenarios and optionally set budget and technical constraints.</p>
+
+        <form action="{{ url_for('recommend_view') }}" method="post" class="form-grid">
+            <div class="form-group form-group--full">
+                <h3>Usage Scenarios</h3>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="preferences" value="photo">
+                    Photography (photo and video shooting)
+                </label>
+                <label>
+                    <input type="checkbox" name="preferences" value="gaming">
+                    Gaming (resource-intensive apps)
+                </label>
+                <label>
+                    <input type="checkbox" name="preferences" value="video">
+                    Watching videos (movies, streaming)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="preferences" value="social">
+                    Social networks and messaging
+                </label>
+                <label>
+                    <input type="checkbox" name="preferences" value="work">
+                    Work and business tasks
+                </label>
+                <label>
+                    <input type="checkbox" name="preferences" value="budget">
+                    Low price is important
+                </label>
+            </div>
+
+            <div class="form-group form-group--full">
+                <h3>Additional Parameters</h3>
+                <p class="muted">Leave fields empty if there are no constraints.</p>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Maximum price (USD):
+                    <input type="number" name="price_max" min="0" step="50" placeholder="For example, 700">
+                </label>
+                <label>
+                    Minimum RAM (GB):
+                    <input type="number" name="ram_min" min="1" max="32" step="1" placeholder="For example, 6">
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Minimum screen size (inches):
+                    <input type="number" name="screen_min" min="4" max="8" step="0.1" placeholder="For example, 5.5">
+                </label>
+                <label>
+                    Maximum screen size (inches):
+                    <input type="number" name="screen_max" min="4" max="8" step="0.1" placeholder="For example, 6.7">
+                </label>
+            </div>
+
+            <div class="form-actions form-group--full">
+                <button type="submit" class="btn-primary">Find Smartphones</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

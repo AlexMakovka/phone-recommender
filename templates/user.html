@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="user-section">
+    <div class="card card--user">
+        <h1>User Page</h1>
+
+        {% if not user %}
+            <p class="muted">
+                You are not logged in. To view your query history and personal data,
+                please log in first.
+            </p>
+            <p>
+                <a href="{{ url_for('login') }}" class="btn-primary">Log In</a>
+            </p>
+        {% else %}
+            <p class="muted">
+                You are logged in as <strong>{{ user }}</strong>.
+                Below is your interaction history with the recommendation system.
+            </p>
+
+            <div class="user-info">
+                <h2>Your Profile</h2>
+                <p>In the demo version, user data is stored minimally: only login and query history.</p>
+                <p>For a full project, potential functionality could include:</p>
+                <ul>
+                    <li>editing personal data and settings;</li>
+                    <li>adjusting the importance of criteria (camera, price, battery, etc.);</li>
+                    <li>saving favorite smartphone models.</li>
+                </ul>
+            </div>
+
+            <div class="user-history" style="margin-top: 20px;">
+                <h2>Smartphone Selection History</h2>
+                {% if history and history|length > 0 %}
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                        <thead>
+                            <tr>
+                                <th style="border-bottom: 1px solid #e5e7eb; text-align: left; padding: 6px;">Time</th>
+                                <th style="border-bottom: 1px solid #e5e7eb; text-align: left; padding: 6px;">Preferences</th>
+                                <th style="border-bottom: 1px solid #e5e7eb; text-align: left; padding: 6px;">Recommended Models</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in history %}
+                            <tr>
+                                <td style="border-bottom: 1px solid #f3f4f6; padding: 6px;">{{ item.timestamp }}</td>
+                                <td style="border-bottom: 1px solid #f3f4f6; padding: 6px;">
+                                    {% if item.preferences %}
+                                        {{ item.preferences|join(', ') }}
+                                    {% else %}
+                                        (not specified)
+                                    {% endif %}
+                                </td>
+                                <td style="border-bottom: 1px solid #f3f4f6; padding: 6px;">
+                                    {% if item.recommended_phones %}
+                                        {{ item.recommended_phones|join(', ') }}
+                                    {% else %}
+                                        (no data)
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="muted">The history is empty. Try selecting a smartphone on the “Recommendations” page.</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

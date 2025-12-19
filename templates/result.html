@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="results-header">
+    <h1>Recommended Models</h1>
+
+    {% if preferences and preferences|length > 0 %}
+        <p>Based on your preferences: <strong>{{ preferences|join(', ') }}</strong></p>
+    {% else %}
+        <p>General recommendations (no preferences specified)</p>
+    {% endif %}
+
+    {% if filters and (filters.price_max or filters.ram_min or filters.screen_min or filters.screen_max) %}
+        <div class="filters-box">
+            <p>Additional constraints considered:</p>
+            <ul>
+                {% if filters.price_max %}
+                    <li>Price up to: ${{ filters.price_max }}</li>
+                {% endif %}
+                {% if filters.ram_min %}
+                    <li>Minimum RAM: {{ filters.ram_min }} GB</li>
+                {% endif %}
+                {% if filters.screen_min %}
+                    <li>Screen at least: {{ "%.1f"|format(filters.screen_min) }}″</li>
+                {% endif %}
+                {% if filters.screen_max %}
+                    <li>Screen at most: {{ "%.1f"|format(filters.screen_max) }}″</li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+</section>
+
+<section class="cards-grid">
+    {% for phone in recommended %}
+    <article class="card card--phone">
+        <div class="card__image">
+            <img 
+            src="{{ url_for('static', filename='images/' ~ phone.Image) }}" 
+            onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/default_phone.png') }}';"
+            alt="{{ phone.Name }}"
+            class="phone-img"/>
+        </div>
+        <div class="card__body">
+            <h2>{{ phone.Name }}</h2>
+            <ul class="spec-list">
+                <li><span>Camera:</span> {{ phone.Camera }} MP</li>
+                <li><span>Battery:</span> {{ phone.Battery }} mAh</li>
+                <li><span>RAM:</span> {{ phone.RAM }} GB</li>
+                <li><span>Screen:</span> {{ phone.Screen }}″</li>
+                <li><span>Price:</span> ${{ phone.Price }}</li>
+            </ul>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+
+<div class="back-link-wrapper">
+    <a class="back-link" href="{{ url_for('index') }}#form">← Choose different preferences</a>
+</div>
+{% endblock %}
